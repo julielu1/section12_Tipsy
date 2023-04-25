@@ -9,7 +9,14 @@
 import UIKit
 
 class ExtrasViewController: UIViewController {
-
+    
+    @IBAction func backPressed(_ sender: UIButton) {
+//        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

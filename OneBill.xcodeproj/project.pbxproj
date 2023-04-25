@@ -17,10 +17,13 @@
 		BF6DAB5229A482920012AF4A /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6DAB5129A482920012AF4A /* CalculatorBrain.swift */; };
 		BF6DAB5429A72C690012AF4A /* Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6DAB5329A72C690012AF4A /* Split.swift */; };
 		BF6DAB5629A737E70012AF4A /* ExtrasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6DAB5529A737E70012AF4A /* ExtrasViewController.swift */; };
+		BFD4687029F78756000EBD98 /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4686F29F78756000EBD98 /* CurrencyManager.swift */; };
+		BFD4687229F7D628000EBD98 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4687129F7D628000EBD98 /* CurrencyData.swift */; };
+		BFD4687429F7DD75000EBD98 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4687329F7DD75000EBD98 /* CurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ADB6894F2326708D006D4E2B /* Tipsy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tipsy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADB6894F2326708D006D4E2B /* OneBill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneBill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB689522326708D006D4E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADB689542326708D006D4E2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ADB689562326708D006D4E2B /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
@@ -32,6 +35,9 @@
 		BF6DAB5129A482920012AF4A /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		BF6DAB5329A72C690012AF4A /* Split.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Split.swift; sourceTree = "<group>"; };
 		BF6DAB5529A737E70012AF4A /* ExtrasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasViewController.swift; sourceTree = "<group>"; };
+		BFD4686F29F78756000EBD98 /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
+		BFD4687129F7D628000EBD98 /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
+		BFD4687329F7DD75000EBD98 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +54,7 @@
 		ADB689462326708D006D4E2B = {
 			isa = PBXGroup;
 			children = (
-				ADB689512326708D006D4E2B /* Tipsy */,
+				ADB689512326708D006D4E2B /* OneBill */,
 				ADB689502326708D006D4E2B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,24 +62,24 @@
 		ADB689502326708D006D4E2B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ADB6894F2326708D006D4E2B /* Tipsy.app */,
+				ADB6894F2326708D006D4E2B /* OneBill.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ADB689512326708D006D4E2B /* Tipsy */ = {
+		ADB689512326708D006D4E2B /* OneBill */ = {
 			isa = PBXGroup;
 			children = (
-				BF6DAB5029A47F050012AF4A /* Models */,
 				ADB689522326708D006D4E2B /* AppDelegate.swift */,
 				ADB689542326708D006D4E2B /* SceneDelegate.swift */,
+				BF6DAB5029A47F050012AF4A /* Models */,
 				BF46BB0329A4730300504A45 /* Controllers */,
 				BF6DAB4F29A47EE80012AF4A /* Views */,
 				ADB6895B2326708E006D4E2B /* Assets.xcassets */,
 				ADB6895D2326708E006D4E2B /* LaunchScreen.storyboard */,
 				ADB689602326708E006D4E2B /* Info.plist */,
 			);
-			path = Tipsy;
+			path = OneBill;
 			sourceTree = "<group>";
 		};
 		BF46BB0329A4730300504A45 /* Controllers */ = {
@@ -99,6 +105,9 @@
 			children = (
 				BF6DAB5129A482920012AF4A /* CalculatorBrain.swift */,
 				BF6DAB5329A72C690012AF4A /* Split.swift */,
+				BFD4686F29F78756000EBD98 /* CurrencyManager.swift */,
+				BFD4687329F7DD75000EBD98 /* CurrencyModel.swift */,
+				BFD4687129F7D628000EBD98 /* CurrencyData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,9 +115,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ADB6894E2326708D006D4E2B /* Tipsy */ = {
+		ADB6894E2326708D006D4E2B /* OneBill */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADB689632326708E006D4E2B /* Build configuration list for PBXNativeTarget "Tipsy" */;
+			buildConfigurationList = ADB689632326708E006D4E2B /* Build configuration list for PBXNativeTarget "OneBill" */;
 			buildPhases = (
 				ADB6894B2326708D006D4E2B /* Sources */,
 				ADB6894C2326708D006D4E2B /* Frameworks */,
@@ -118,9 +127,9 @@
 			);
 			dependencies = (
 			);
-			name = Tipsy;
+			name = OneBill;
 			productName = Tipsy;
-			productReference = ADB6894F2326708D006D4E2B /* Tipsy.app */;
+			productReference = ADB6894F2326708D006D4E2B /* OneBill.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +147,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ADB6894A2326708D006D4E2B /* Build configuration list for PBXProject "Tipsy" */;
+			buildConfigurationList = ADB6894A2326708D006D4E2B /* Build configuration list for PBXProject "OneBill" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -151,7 +160,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ADB6894E2326708D006D4E2B /* Tipsy */,
+				ADB6894E2326708D006D4E2B /* OneBill */,
 			);
 		};
 /* End PBXProject section */
@@ -174,12 +183,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFD4687429F7DD75000EBD98 /* CurrencyModel.swift in Sources */,
+				BFD4687229F7D628000EBD98 /* CurrencyData.swift in Sources */,
 				ADB689572326708D006D4E2B /* CalculatorViewController.swift in Sources */,
 				ADB689532326708D006D4E2B /* AppDelegate.swift in Sources */,
 				ADB689552326708D006D4E2B /* SceneDelegate.swift in Sources */,
 				BF6DAB5229A482920012AF4A /* CalculatorBrain.swift in Sources */,
 				BF6DAB5629A737E70012AF4A /* ExtrasViewController.swift in Sources */,
 				BF6DAB5429A72C690012AF4A /* Split.swift in Sources */,
+				BFD4687029F78756000EBD98 /* CurrencyManager.swift in Sources */,
 				BF46BB0229A472D900504A45 /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,12 +337,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Tipsy/Info.plist;
+				INFOPLIST_FILE = OneBill/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.appbrewery.Tipsy;
+				PRODUCT_BUNDLE_IDENTIFIER = co.julielu.OneBill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -342,12 +354,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Tipsy/Info.plist;
+				INFOPLIST_FILE = OneBill/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = co.appbrewery.Tipsy;
+				PRODUCT_BUNDLE_IDENTIFIER = co.julielu.OneBill;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -357,7 +369,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ADB6894A2326708D006D4E2B /* Build configuration list for PBXProject "Tipsy" */ = {
+		ADB6894A2326708D006D4E2B /* Build configuration list for PBXProject "OneBill" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADB689612326708E006D4E2B /* Debug */,
@@ -366,7 +378,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADB689632326708E006D4E2B /* Build configuration list for PBXNativeTarget "Tipsy" */ = {
+		ADB689632326708E006D4E2B /* Build configuration list for PBXNativeTarget "OneBill" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADB689642326708E006D4E2B /* Debug */,
