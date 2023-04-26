@@ -10,13 +10,16 @@ import UIKit
 
 class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     // IBOutlets
-    @IBOutlet weak var billTextField: UITextField!
+    @IBOutlet weak var billTextField: UITextFieldWhitePlaceholder!
     @IBOutlet weak var zeroPctButton: UIButton!
     @IBOutlet weak var tenPctButton: UIButton!
     @IBOutlet weak var twentyPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
     @IBOutlet weak var basePicker: UIPickerView!
     @IBOutlet weak var quotePicker: UIPickerView!
+    @IBOutlet weak var stepper: UIStepper!
+    @IBOutlet weak var fetchingdataLabel: UILabel!
+    @IBOutlet weak var fetchingdataActivityIndicator: UIActivityIndicatorView!
     
     // Variables
     var tipMultiplier = 1.0
@@ -75,14 +78,17 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
             calculatorBrain.calculateCost(billTotal: billTotal, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate, base: baseCurrency, quote: quoteCurrency)
             performSegue(withIdentifier: "goToResult", sender: self)
         } else {
+            fetchingdataLabel.isHidden = false
+            fetchingdataActivityIndicator.startAnimating()
             // Completion handler is being used
             currencyManager.fetchRate(baseCurrency: baseCurrency, quotedCurrency: quoteCurrency) {rate in
                 self.calculatedRate = rate
-                
                 // Perform calculations and segues
                 self.calculatorBrain.calculateCost(billTotal: billTotal, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate, base: self.baseCurrency, quote: self.quoteCurrency)
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "goToResult", sender: self)
+                    self.fetchingdataLabel.isHidden = true
+                    self.fetchingdataActivityIndicator.stopAnimating()
                 }
             }
         }
@@ -93,21 +99,12 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == basePicker || pickerView == quotePicker {
             return pickerBaseData.count }
         else {
             return 1
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == basePicker || pickerView == quotePicker {
-            return pickerBaseData[row]
-        }
-        else {
-            return "NULL"
         }
     }
     
@@ -120,6 +117,18 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
 
     }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData: String
+        if pickerView == basePicker || pickerView == quotePicker {
+            titleData =  pickerBaseData[row]
+        }
+        else {
+            titleData = "NULL"
+        }
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        return myTitle
+    }
 
     // Ignore / testing
     @IBAction func extraPressed(_ sender: Any) {
@@ -129,6 +138,10 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     // Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        stepper.minimumValue = 1
+        
+        fetchingdataLabel.isHidden = true
         
         // Delegates
         self.basePicker.delegate = self
@@ -139,8 +152,28 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         currencyManager.delegate = self
         
+        // Data
+        
         pickerBaseData = pickerData.fullData
         pickerQuoteData = pickerBaseData
+        
+        
+        basePicker.selectRow(1, inComponent: 0, animated: false)
+        quotePicker.selectRow(1, inComponent: 0, animated: false)
+        
+        //Looks for single or multiple taps.
+         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
+    }
+    
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+    //Causes the view (or one of its embedded text fields) to resign the first responder status.
+    view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -155,6 +188,7 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
             destinationVC.totalBase = calculatorBrain.returnTotalBase()
             destinationVC.totalQuote = calculatorBrain.returnTotalQuote()
         }
+        
         
 //        else if segue.identifier == "goToExtras" {
 //            segue.destination as! ExtrasViewController
@@ -173,3 +207,4 @@ extension CalculatorViewController: CurrencyManagerDelegate {
         print(error)
     }
 }
+
