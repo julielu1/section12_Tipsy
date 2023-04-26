@@ -12,4 +12,7 @@ struct Split {
     var costPerPerson: Float?
     var splitPeople: Int?
     var splitPct: Int?
+    var baseCurrency: String?
+    var quoteCurrency: String?
+    var exchangeRate: Float?
 }

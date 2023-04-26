@@ -10,7 +10,7 @@ import Foundation
 
 struct CalculatorBrain {
     var split: Split?
-    mutating func calculateCost (billTotal: String?, tipMultiplier: Double, splitString: String?, exchangeRate: Float) {
+    mutating func calculateCost (billTotal: String?, tipMultiplier: Double, splitString: String?, exchangeRate: Float, base: String, quote: String) {
         let exchangeRateRounded = round(exchangeRate * 100)/100
         let billTotalFloat = Float(billTotal!)
         let tipMultiplier = Float(tipMultiplier)
@@ -19,7 +19,8 @@ struct CalculatorBrain {
         
         let costFloat = (((billTotalFloat ?? 0.0) * tipMultiplier) / splitFloat!) * exchangeRateRounded
         let costFloatRounded = round(costFloat * 100)/100
-        split = Split(costPerPerson: costFloatRounded, splitPeople: Int(splitFloat!), splitPct: tipPct)
+//        split = Split(costPerPerson: costFloatRounded, splitPeople: Int(splitFloat!), splitPct: tipPct)
+        split = Split(costPerPerson: costFloatRounded, splitPeople: Int(splitFloat!), splitPct: tipPct, baseCurrency: base, quoteCurrency: quote, exchangeRate: exchangeRateRounded)
     }
     
     func returnCost () -> Float {
@@ -32,5 +33,17 @@ struct CalculatorBrain {
     
     func returnTip () -> Int {
         return split?.splitPct ?? 0
+    }
+    
+    func returnBaseCurrency () -> String {
+        return split?.baseCurrency ?? "NA"
+    }
+    
+    func returnQuoteCurrency () -> String {
+        return split?.quoteCurrency ?? "NA"
+    }
+    
+    func returnRate () -> Float {
+        return split?.exchangeRate ?? 0
     }
 }

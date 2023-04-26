@@ -28,6 +28,7 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var pickerQuoteData: [String] = [String]()
     var currencyManager = CurrencyManager()
     var calculatedRate: Float = 0
+    var pickerData = PickerData()
     
     // IBActions
     @IBAction func tipChanged(_ sender: UIButton) {
@@ -68,12 +69,10 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
         let billTotal = billTextField.text
         let splitValue = splitNumberLabel.text
-        print(baseCurrency)
-        print(quoteCurrency)
         
         if baseCurrency == quoteCurrency {
             self.calculatedRate = 1
-            calculatorBrain.calculateCost(billTotal: billTotal, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate)
+            calculatorBrain.calculateCost(billTotal: billTotal, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate, base: baseCurrency, quote: quoteCurrency)
             performSegue(withIdentifier: "goToResult", sender: self)
         } else {
             // Completion handler is being used
@@ -81,7 +80,7 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 self.calculatedRate = rate
                 
                 // Perform calculations and segues
-                self.calculatorBrain.calculateCost(billTotal: billTotal, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate)
+                self.calculatorBrain.calculateCost(billTotal: billTotal, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate, base: self.baseCurrency, quote: self.quoteCurrency)
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "goToResult", sender: self)
                 }
@@ -114,11 +113,10 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == basePicker {
-            baseCurrency = pickerBaseData[row]
+            baseCurrency = pickerData.currencyOnly[row]
         }
         else if pickerView == quotePicker {
-            quoteCurrency = pickerQuoteData[row]
-            
+            quoteCurrency = pickerData.currencyOnly[row]
         }
 
     }
@@ -141,8 +139,8 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         currencyManager.delegate = self
         
-        pickerBaseData = ["AUD", "USD"]
-        pickerQuoteData = ["AUD", "USD"]
+        pickerBaseData = pickerData.fullData
+        pickerQuoteData = pickerBaseData
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

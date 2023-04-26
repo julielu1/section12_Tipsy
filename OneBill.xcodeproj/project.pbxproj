@@ -20,6 +20,7 @@
 		BFD4687029F78756000EBD98 /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4686F29F78756000EBD98 /* CurrencyManager.swift */; };
 		BFD4687229F7D628000EBD98 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4687129F7D628000EBD98 /* CurrencyData.swift */; };
 		BFD4687429F7DD75000EBD98 /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4687329F7DD75000EBD98 /* CurrencyModel.swift */; };
+		BFD4687629F8B005000EBD98 /* PickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD4687529F8B005000EBD98 /* PickerData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		BFD4686F29F78756000EBD98 /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
 		BFD4687129F7D628000EBD98 /* CurrencyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
 		BFD4687329F7DD75000EBD98 /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		BFD4687529F8B005000EBD98 /* PickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickerData.swift; path = ../../../../PickerData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				BF6DAB5129A482920012AF4A /* CalculatorBrain.swift */,
+				BFD4687529F8B005000EBD98 /* PickerData.swift */,
 				BF6DAB5329A72C690012AF4A /* Split.swift */,
 				BFD4686F29F78756000EBD98 /* CurrencyManager.swift */,
 				BFD4687329F7DD75000EBD98 /* CurrencyModel.swift */,
@@ -192,6 +195,7 @@
 				BF6DAB5629A737E70012AF4A /* ExtrasViewController.swift in Sources */,
 				BF6DAB5429A72C690012AF4A /* Split.swift in Sources */,
 				BFD4687029F78756000EBD98 /* CurrencyManager.swift in Sources */,
+				BFD4687629F8B005000EBD98 /* PickerData.swift in Sources */,
 				BF46BB0229A472D900504A45 /* ResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
