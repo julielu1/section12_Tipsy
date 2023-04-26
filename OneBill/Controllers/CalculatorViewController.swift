@@ -14,12 +14,14 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var zeroPctButton: UIButton!
     @IBOutlet weak var tenPctButton: UIButton!
     @IBOutlet weak var twentyPctButton: UIButton!
+    @IBOutlet weak var customPctButton: UIButton!
     @IBOutlet weak var splitNumberLabel: UILabel!
     @IBOutlet weak var basePicker: UIPickerView!
     @IBOutlet weak var quotePicker: UIPickerView!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var fetchingdataLabel: UILabel!
     @IBOutlet weak var fetchingdataActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var pickerStackView: UIStackView!
     
     // Variables
     var tipMultiplier = 1.0
@@ -32,6 +34,8 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var currencyManager = CurrencyManager()
     var calculatedRate: Float = 0
     var pickerData = PickerData()
+    
+    let customTextField = UITextField()
     
     // IBActions
     @IBAction func tipChanged(_ sender: UIButton) {
@@ -110,9 +114,13 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == basePicker {
+            basePicker.alpha = 1
+            quotePicker.alpha = 1
             baseCurrency = pickerData.currencyOnly[row]
         }
         else if pickerView == quotePicker {
+            basePicker.alpha = 1
+            quotePicker.alpha = 1
             quoteCurrency = pickerData.currencyOnly[row]
         }
 
@@ -126,6 +134,7 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         else {
             titleData = "NULL"
         }
+        //Sets the colour to black. Was having an issue with that.
         let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         return myTitle
     }
@@ -138,10 +147,16 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     // Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+            
+        // Stepper settings
         stepper.minimumValue = 1
         
+        // Fetching data label
         fetchingdataLabel.isHidden = true
+        
+        // Picker alpha
+        basePicker.alpha = 0.25
+        quotePicker.alpha = 0.25
         
         // Delegates
         self.basePicker.delegate = self
@@ -152,30 +167,39 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         currencyManager.delegate = self
         
-        // Data
-        
+        // Picker Data
         pickerBaseData = pickerData.fullData
         pickerQuoteData = pickerBaseData
         
-        
+        // Picker starts from row 2
         basePicker.selectRow(1, inComponent: 0, animated: false)
         quotePicker.selectRow(1, inComponent: 0, animated: false)
         
         //Looks for single or multiple taps.
-         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-
-        view.addGestureRecognizer(tap)
+        let tapDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tapDismissKeyboard)
+        
+        
+    // THIS DOES NOT WORK CURRENTLY
+        /*
+        let tapBasePicker = UITapGestureRecognizer(target: self, action: #selector(pickerViewTapped))
+        basePicker.addGestureRecognizer(tapBasePicker)
+         */
     }
     
     //Calls this function when the tap is recognized.
     @objc func dismissKeyboard() {
-    //Causes the view (or one of its embedded text fields) to resign the first responder status.
-    view.endEditing(true)
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
-    
+    /*
+    @objc func pickerViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
+        // Code to be executed when the picker view is tapped
+        self.basePicker.alpha = 1
+        self.quotePicker.alpha = 1
+    }
+     */
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResult" {
             let destinationVC = segue.destination as! ResultsViewController
@@ -194,8 +218,6 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
 //            segue.destination as! ExtrasViewController
 //        }
     }
-    
-
 }
 
 extension CalculatorViewController: CurrencyManagerDelegate {
