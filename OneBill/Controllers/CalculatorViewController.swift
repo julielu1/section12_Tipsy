@@ -149,6 +149,11 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
             destinationVC.costFloat = calculatorBrain.returnCost()
             destinationVC.splitPeople = calculatorBrain.returnSplit()
             destinationVC.splitPct = calculatorBrain.returnTip()
+            destinationVC.baseCurrency = calculatorBrain.returnBaseCurrency()
+            destinationVC.quoteCurrency = calculatorBrain.returnQuoteCurrency()
+            destinationVC.exchangeRate = calculatorBrain.returnRate()
+            destinationVC.totalBase = calculatorBrain.returnTotalBase()
+            destinationVC.totalQuote = calculatorBrain.returnTotalQuote()
         }
         
 //        else if segue.identifier == "goToExtras" {

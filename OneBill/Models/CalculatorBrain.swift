@@ -19,8 +19,9 @@ struct CalculatorBrain {
         
         let costFloat = (((billTotalFloat ?? 0.0) * tipMultiplier) / splitFloat!) * exchangeRateRounded
         let costFloatRounded = round(costFloat * 100)/100
-//        split = Split(costPerPerson: costFloatRounded, splitPeople: Int(splitFloat!), splitPct: tipPct)
-        split = Split(costPerPerson: costFloatRounded, splitPeople: Int(splitFloat!), splitPct: tipPct, baseCurrency: base, quoteCurrency: quote, exchangeRate: exchangeRateRounded)
+        let totalBase = (billTotalFloat ?? 0 * tipMultiplier)
+        let totalQuote = (billTotalFloat ?? 0 * tipMultiplier) * exchangeRateRounded
+        split = Split(costPerPerson: costFloatRounded, splitPeople: Int(splitFloat!), splitPct: tipPct, baseCurrency: base, quoteCurrency: quote, exchangeRate: exchangeRateRounded, totalBase: totalBase, totalQuote: totalQuote)
     }
     
     func returnCost () -> Float {
@@ -45,5 +46,13 @@ struct CalculatorBrain {
     
     func returnRate () -> Float {
         return split?.exchangeRate ?? 0
+    }
+    
+    func returnTotalBase () -> Float {
+        return split?.totalBase ?? 0
+    }
+    
+    func returnTotalQuote () -> Float {
+        return split?.totalQuote ?? 0
     }
 }

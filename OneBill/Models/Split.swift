@@ -15,4 +15,6 @@ struct Split {
     var baseCurrency: String?
     var quoteCurrency: String?
     var exchangeRate: Float?
+    var totalBase: Float?
+    var totalQuote: Float?
 }
