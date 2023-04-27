@@ -22,6 +22,8 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var fetchingdataLabel: UILabel!
     @IBOutlet weak var fetchingdataActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var pickerStackView: UIStackView!
+    @IBOutlet weak var customPctTextField: UITextField!
+    @IBOutlet weak var customPctTextStack: UIStackView!
     
     // Variables
     var tipMultiplier = 1.0
@@ -43,25 +45,40 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         case "0%":
             tipMultiplier = 1.0
             splitPct = 0
+            customPctTextStack.isHidden = true
             zeroPctButton.isSelected = true
             tenPctButton.isSelected = false
             twentyPctButton.isSelected = false
+            customPctButton.isSelected = false
         case "10%":
             tipMultiplier = 1.10
             splitPct = 10
+            customPctTextStack.isHidden = true
             tenPctButton.isSelected = true
             zeroPctButton.isSelected = false
             twentyPctButton.isSelected = false
+            customPctButton.isSelected = false
         case "20%":
             tipMultiplier = 1.20
             splitPct = 20
+            customPctTextStack.isHidden = true
             twentyPctButton.isSelected = true
             tenPctButton.isSelected = false
             zeroPctButton.isSelected = false
+            customPctButton.isSelected = false
+        case "Custom":
+            customTextField.isSelected = true
+            customPctTextStack.isHidden = false
+            twentyPctButton.isSelected = false
+            tenPctButton.isSelected = false
+            zeroPctButton.isSelected = false
+            customPctButton.isSelected = true
         default:
             zeroPctButton.isSelected = false
             tenPctButton.isSelected = false
             twentyPctButton.isSelected = false
+            customPctButton.isSelected = false
+            customPctTextStack.isHidden = false
         }
         
     }
@@ -76,6 +93,12 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
         let billTotal = billTextField.text
         let splitValue = splitNumberLabel.text
+        
+        if self.customPctButton.isSelected == true {
+            let customPctDouble = Double(customPctTextField.text ?? "0")
+            splitPct = Int(customPctDouble!)
+            self.tipMultiplier = customPctDouble!/100 + 1
+        }
         
         if baseCurrency == quoteCurrency {
             self.calculatedRate = 1
@@ -147,7 +170,9 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     // Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
+        customPctTextStack.isHidden = true
+        
         // Stepper settings
         stepper.minimumValue = 1
         
@@ -179,8 +204,10 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         let tapDismissKeyboard = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tapDismissKeyboard)
         
+        customPctButton.addTarget(self, action: #selector(customPctButtonPressed), for: .touchUpInside)
+
         
-    // THIS DOES NOT WORK CURRENTLY
+    // THIS DOES NOT WORK CURRENTLY. This is meant to automatically set the alpha of the pickers to 1 when clicked
         /*
         let tapBasePicker = UITapGestureRecognizer(target: self, action: #selector(pickerViewTapped))
         basePicker.addGestureRecognizer(tapBasePicker)
@@ -192,6 +219,11 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
+    
+    @objc func customPctButtonPressed() {
+            // Automatically select the text field and bring up the keyboard
+            customPctTextField.becomeFirstResponder()
+        }
     /*
     @objc func pickerViewTapped(_ gestureRecognizer: UITapGestureRecognizer) {
         // Code to be executed when the picker view is tapped
