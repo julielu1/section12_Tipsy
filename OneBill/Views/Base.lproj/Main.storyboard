@@ -118,10 +118,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nGD-ds-HMc">
-                                        <rect key="frame" x="107.66666666666669" y="100" width="150" height="30"/>
+                                        <rect key="frame" x="82.666666666666686" y="100" width="200" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choose tip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDm-4I-R22">
-                                                <rect key="frame" x="18.999999999999986" y="0.0" width="112.00000000000001" height="30"/>
+                                                <rect key="frame" x="43.999999999999986" y="0.0" width="112.00000000000001" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="5mu-If-zJJ"/>
                                                 </constraints>
@@ -134,7 +134,7 @@
                                         <constraints>
                                             <constraint firstItem="QDm-4I-R22" firstAttribute="centerX" secondItem="nGD-ds-HMc" secondAttribute="centerX" id="XQK-L2-4gb"/>
                                             <constraint firstItem="QDm-4I-R22" firstAttribute="centerY" secondItem="nGD-ds-HMc" secondAttribute="centerY" id="ehX-I6-qvU"/>
-                                            <constraint firstAttribute="width" constant="150" id="hsK-S2-xdF"/>
+                                            <constraint firstAttribute="width" constant="200" id="hsK-S2-xdF"/>
                                             <constraint firstItem="QDm-4I-R22" firstAttribute="top" secondItem="nGD-ds-HMc" secondAttribute="top" id="o1X-XO-oAw"/>
                                             <constraint firstAttribute="bottom" secondItem="QDm-4I-R22" secondAttribute="bottom" id="r7h-Pe-0MA"/>
                                         </constraints>
@@ -197,7 +197,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wAg-G2-8qT">
                                                         <rect key="frame" x="84.999999999999986" y="0.0" width="71.000000000000014" height="42"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="h09-k4-aOu">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="h09-k4-aOu" customClass="UITextFieldThreeCharacterLimit" customModule="OneBill" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="42"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -224,10 +224,11 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXp-fa-207">
-                                        <rect key="frame" x="62.666666666666686" y="256" width="240" height="30"/>
+                                        <rect key="frame" x="82.666666666666686" y="256" width="200" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="convert currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZ5-S0-Vai">
-                                                <rect key="frame" x="20" y="0.0" width="200" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                                <color key="backgroundColor" red="0.63529411759999999" green="0.81568627449999997" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="DmR-Fr-G4H"/>
                                                     <constraint firstAttribute="height" constant="30" id="jng-FI-WHj"/>

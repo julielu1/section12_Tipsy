@@ -15,6 +15,6 @@ class UIViewWithBorder: UIView {
         layer.borderColor = UIColor.black.cgColor // Set the border color
         layer.cornerRadius = 5 // Add a corner radius for a rounded border
         
-        backgroundColor = UIColor.white.withAlphaComponent(0.15)
+//        backgroundColor = UIColor.white.withAlphaComponent(0.15) // Change the background alpha 
     }
 }
