@@ -91,9 +91,10 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBAction func calculatePressed(_ sender: Any) {
 
-        let billTotal = billTextField.text
+        let billText = billTextField.text
         let splitValue = splitNumberLabel.text
-        
+        let billNumbers = billText!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+
         if self.customPctButton.isSelected == true {
             let customPctDouble = Double(customPctTextField.text ?? "0")
             splitPct = Int(customPctDouble!)
@@ -102,7 +103,7 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         if baseCurrency == quoteCurrency {
             self.calculatedRate = 1
-            calculatorBrain.calculateCost(billTotal: billTotal, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate, base: baseCurrency, quote: quoteCurrency)
+            calculatorBrain.calculateCost(billTotal: billNumbers, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate, base: baseCurrency, quote: quoteCurrency)
             performSegue(withIdentifier: "goToResult", sender: self)
         } else {
             fetchingdataLabel.isHidden = false
@@ -111,7 +112,7 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
             currencyManager.fetchRate(baseCurrency: baseCurrency, quotedCurrency: quoteCurrency) {rate in
                 self.calculatedRate = rate
                 // Perform calculations and segues
-                self.calculatorBrain.calculateCost(billTotal: billTotal, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate, base: self.baseCurrency, quote: self.quoteCurrency)
+                self.calculatorBrain.calculateCost(billTotal: billNumbers, tipMultiplier: self.tipMultiplier, splitString: splitValue, exchangeRate: self.calculatedRate, base: self.baseCurrency, quote: self.quoteCurrency)
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "goToResult", sender: self)
                     self.fetchingdataLabel.isHidden = true
@@ -136,6 +137,19 @@ class CalculatorViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == basePicker {
+            if billTextField.text != "" {
+                let currencySymbol = pickerData.symbolDictionary[pickerData.currencyOnly[row]]
+                let billText = billTextField.text
+                let numberString = billText!.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+                print(numberString)
+                print(currencySymbol!)
+                billTextField.text = "\(currencySymbol!)\(numberString)"
+
+            }
+                
+        }
+        
         if pickerView == basePicker {
             basePicker.alpha = 1
             quotePicker.alpha = 1

@@ -11,8 +11,10 @@ class UIViewWithBorder: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.borderWidth = 2 // Set the border width
+        layer.borderWidth = 1 // Set the border width
         layer.borderColor = UIColor.black.cgColor // Set the border color
         layer.cornerRadius = 5 // Add a corner radius for a rounded border
+        
+//        backgroundColor = UIColor.white.withAlphaComponent(0.15) // Change the background alpha 
     }
 }
