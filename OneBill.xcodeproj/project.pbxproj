@@ -19,6 +19,7 @@
 		BF63214029FA205D0027A2C5 /* UIViewWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63213F29FA205D0027A2C5 /* UIViewWithShadow.swift */; };
 		BF63214229FB3BDC0027A2C5 /* PickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63214129FB3BDC0027A2C5 /* PickerData.swift */; };
 		BF63214429FE347B0027A2C5 /* UITextFieldThreeCharacterLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63214329FE347B0027A2C5 /* UITextFieldThreeCharacterLimit.swift */; };
+		BF63214629FFB00C0027A2C5 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63214529FFB00C0027A2C5 /* RoundedView.swift */; };
 		BF6DAB5229A482920012AF4A /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6DAB5129A482920012AF4A /* CalculatorBrain.swift */; };
 		BF6DAB5429A72C690012AF4A /* Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6DAB5329A72C690012AF4A /* Split.swift */; };
 		BF6DAB5629A737E70012AF4A /* ExtrasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6DAB5529A737E70012AF4A /* ExtrasViewController.swift */; };
@@ -42,6 +43,7 @@
 		BF63213F29FA205D0027A2C5 /* UIViewWithShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewWithShadow.swift; sourceTree = "<group>"; };
 		BF63214129FB3BDC0027A2C5 /* PickerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerData.swift; sourceTree = "<group>"; };
 		BF63214329FE347B0027A2C5 /* UITextFieldThreeCharacterLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldThreeCharacterLimit.swift; sourceTree = "<group>"; };
+		BF63214529FFB00C0027A2C5 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		BF6DAB5129A482920012AF4A /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		BF6DAB5329A72C690012AF4A /* Split.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Split.swift; sourceTree = "<group>"; };
 		BF6DAB5529A737E70012AF4A /* ExtrasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtrasViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				BF6DAB5329A72C690012AF4A /* Split.swift */,
 				BFD4686F29F78756000EBD98 /* CurrencyManager.swift */,
 				BFD4687329F7DD75000EBD98 /* CurrencyModel.swift */,
+				BF63214529FFB00C0027A2C5 /* RoundedView.swift */,
 				BF63214129FB3BDC0027A2C5 /* PickerData.swift */,
 				BFD4687129F7D628000EBD98 /* CurrencyData.swift */,
 				BF63214329FE347B0027A2C5 /* UITextFieldThreeCharacterLimit.swift */,
@@ -206,6 +209,7 @@
 				ADB689552326708D006D4E2B /* SceneDelegate.swift in Sources */,
 				BF6DAB5229A482920012AF4A /* CalculatorBrain.swift in Sources */,
 				BF6DAB5629A737E70012AF4A /* ExtrasViewController.swift in Sources */,
+				BF63214629FFB00C0027A2C5 /* RoundedView.swift in Sources */,
 				BF6DAB5429A72C690012AF4A /* Split.swift in Sources */,
 				BF63213C29F91E9A0027A2C5 /* UIViewWithBorder.swift in Sources */,
 				BFD4687029F78756000EBD98 /* CurrencyManager.swift in Sources */,
